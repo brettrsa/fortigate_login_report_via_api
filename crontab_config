@@ -1,0 +1,11 @@
+# download fortigate vpn logs once every 3 days
+0 	0 	*/1 	* 	*      /usr/local/bin/fgt_get_log.py
+
+# format fortigate vpn logs
+3      0      */1      *       *     /usr/local/bin/fgt_format_logs.sh
+
+# import formatted logs into db
+5	0      */1      *	*    /usr/local/bin/fgt_import_logs.sh
+
+# download, format and import logs once a week on a friday, extract and send a report
+0	17      *	*	5   /usr/local/bin/fgt_vpn_log_import_sys.sh
